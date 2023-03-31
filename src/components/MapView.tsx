@@ -3,18 +3,18 @@ import { Map } from "mapbox-gl";
 
 import { PlacesContext } from "../contexts"
 import { Loading } from "./Loading"
+import { MapContext } from '../contexts/maps/MapContext';
 
 
 export const MapView = () => {
 
     const { isLoading, userLocation } = useContext( PlacesContext );
+    const { isMapReady, map, setMap } = useContext( MapContext );
     const mapDiv = useRef<HTMLDivElement>(null)
 
     useLayoutEffect(() => {
       
         if ( isLoading ) return;
-
-        console.log(userLocation)
 
         const map = new Map({
             container: mapDiv.current!, 
@@ -22,6 +22,8 @@ export const MapView = () => {
             center: userLocation, 
             zoom: 14, 
         });
+
+        setMap( map );
     
     }, [isLoading])
 

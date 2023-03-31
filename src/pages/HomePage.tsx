@@ -1,10 +1,17 @@
-import { MapView } from "../components"
+import { BtnMyLocation, MapView, ReactLogo } from "../components"
+import { SearchBar } from "../components/SearchBar"
 
 
 export const HomePage = () => {
 
         
     return (
-        <MapView />
+        <>
+            <MapView />
+            <BtnMyLocation />
+            <ReactLogo />
+            <SearchBar />
+        </>
+        
     )
 }
